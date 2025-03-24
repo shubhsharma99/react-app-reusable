@@ -7,7 +7,7 @@ on:
 
 jobs:
   ci:
-    uses: your-org-name/reusable-workflows/.github/workflows/ci.yml@main
+    uses: shubhsharma99/github-actions-workflows/.github/workflows/ci.yml@main
     with:
       aws-region: "us-east-1"
       s3-bucket: "your-s3-bucket"
@@ -18,7 +18,7 @@ jobs:
 
   cd:
     needs: ci
-    uses: your-org-name/reusable-workflows/.github/workflows/cd.yml@main
+    uses:  shubhsharma99/github-actions-workflows/.github/workflows/cd.yml@main
     with:
       aws-region: "us-east-1"
       s3-bucket: "your-s3-bucket"
