@@ -1,0 +1,17 @@
+name: CD for React on AWS Lambda
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  cd:
+    uses: shubhsharma99/github-actions-workflows/.github/workflows/cd.yml@main
+    with:
+      aws-region: "us-east-1"
+      s3-bucket: "your-s3-bucket-name"
+      lambda-function-name: "your-lambda-function-name"
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
