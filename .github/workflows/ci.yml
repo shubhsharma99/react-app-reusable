@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-upload:
-    uses: shubhsharma99/github-actions-workflows/.github/workflows/reusable-ci.yml@main
+    uses: shubhsharma99/github-actions-workflows/.github/workflows/ci.yml@main
     with:
       aws-region: "us-east-1"
       s3-bucket: "my-react-app-bucket"
