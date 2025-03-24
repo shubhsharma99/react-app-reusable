@@ -1,0 +1,28 @@
+name: CI/CD for React on AWS Lambda
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  ci:
+    uses: your-org-name/reusable-workflows/.github/workflows/ci.yml@main
+    with:
+      aws-region: "us-east-1"
+      s3-bucket: "your-s3-bucket"
+      node-version: "18"
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+  cd:
+    needs: ci
+    uses: your-org-name/reusable-workflows/.github/workflows/cd.yml@main
+    with:
+      aws-region: "us-east-1"
+      s3-bucket: "your-s3-bucket"
+      lambda-function-name: "your-lambda-function"
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
