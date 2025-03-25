@@ -1,31 +1,13 @@
-# name: CD for React on AWS Lambda
-
-# on:
-#   push:
-#     branches:
-#       - dev
-
-# jobs:
-#   cd:
-#     uses: shubhsharma99/github-actions-workflows/.github/workflows/cd.yml@main
-#     with:
-#       aws-region: "us-east-1"
-#       s3-bucket: "your-s3-bucket-name"
-#       lambda-function-name: "your-lambda-function-name"
-#     secrets:
-#       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
 name: Deploy Lambda on Release
 
 on:
   release:
     types:
-       - "v*"
+      - published  # Runs when a release is published
 
 jobs:
   deploy-lambda:
-    uses: your-org/your-repo/.github/workflows/deploy-lambda.yml@main  # Change repo path
+    uses: shubhsharma99/github-actions-workflows/.github/workflows/deploy-lambda.yml@main  # Update to your repository path
     with:
       aws-region: "us-east-1"
       s3-bucket: "my-deployment-bucket"
@@ -33,3 +15,4 @@ jobs:
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
