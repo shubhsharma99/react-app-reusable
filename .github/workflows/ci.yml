@@ -7,7 +7,7 @@ on:
 
 jobs:
   ci:
-    uses: shubhsharma99/github-actions-workflows/.github/workflows/your-reusable-workflow.yml@main
+    uses: shubhsharma99/github-actions-workflows/.github/workflows/ci.yml@main
     with:
       aws-region: "us-east-1"
       s3-bucket: "your-s3-bucket"
