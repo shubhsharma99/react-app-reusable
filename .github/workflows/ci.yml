@@ -6,12 +6,37 @@ on:
       - main
 
 jobs:
-  build-and-upload:
-    uses: shubhsharma99/github-actions-workflows/.github/workflows/ci.yml@main
+  ci:
+    uses: shubhsharma99/github-actions-workflows/.github/workflows/your-reusable-workflow.yml@main
     with:
       aws-region: "us-east-1"
-      s3-bucket: "my-react-app-bucket"
+      s3-bucket: "your-s3-bucket"
       node-version: "20"
+      s3-key: "my-app.zip"
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+
+
+
+
+
+
+# name: CI - Deploy React App
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build-and-upload:
+#     uses: shubhsharma99/github-actions-workflows/.github/workflows/ci.yml@main
+#     with:
+#       aws-region: "us-east-1"
+#       s3-bucket: "my-react-app-bucket"
+#       node-version: "20"
+#     secrets:
+#       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
