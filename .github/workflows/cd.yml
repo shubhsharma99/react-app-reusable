@@ -1,18 +1,24 @@
-name: Deploy Lambda on Release
+name: CD - Deploy to AWS Lambda from S3
+
+# on:
+#   workflow_run:
+#     workflows: ["CI - Build and Upload to S3"]
+#     types:
+#       - completed
 
 on:
   release:
     types:
-      - published  # Runs when a release is published
+      - published 
 
 jobs:
-  deploy-lambda:
-    uses: shubhsharma99/github-actions-workflows/.github/workflows/deploy-lambda.yml@main  # Update to your repository path
+  cd:
+    uses: shubhsharma99/github-actions-workflows/.github/workflows/Probot_Dev_CD.yml@feature/DEVOPS-530-probot-reusable
     with:
       aws-region: "us-east-1"
-      s3-bucket: "my-deployment-bucket"
-      lambda-function-name: "my-lambda-function"
+      s3-bucket: "delivery-probot-service"
+      lambda-function-name: "Delivery-probot-service"
+      s3-key: "my-function.zip"  # Ensure this is correct
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
